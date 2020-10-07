@@ -12,7 +12,7 @@ public class Consultas {
      
    public String[] consultarDatosUsuario(String nombre) {
        String[] datos = new String[3];
-       String consultaUs = "SELECT NOMBRE,CONTRASEÑA,TIPO_USUARIO FROM usuarios where NOMBRE='" +nombre+ "'";
+       String consultaUs = "SELECT NOMBRE,CONTRASEÑA,TIPO_USUARIO FROM USUARIO where NOMBRE='" +nombre+ "'";
         try {
             conn.conexion();
             respuesta = conn.consulta(consultaUs);
@@ -32,15 +32,14 @@ public class Consultas {
         return null;
     }
    
-   public DefaultComboBoxModel obt_Proveedores(String url){
+   public DefaultComboBoxModel obt_Proveedores(String url, String columna){
        DefaultComboBoxModel listadoProveedores = new DefaultComboBoxModel();
-       listadoProveedores.addElement("elija un proveedor");
-       //String url = "SELECT NOMBRE FROM  PROVEEDOR";
+       //listadoProveedores.addElement("elija un proveedor");
        try {
            conn.conexion();
            respuesta = conn.consulta(url);
            while(respuesta.next()){
-               listadoProveedores.addElement(respuesta.getString("NOMBRE"));
+               listadoProveedores.addElement(respuesta.getString(columna));
            }
        } catch (Exception e) {
            System.out.println("error: " +e.getMessage() );

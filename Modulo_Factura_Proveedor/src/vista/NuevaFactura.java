@@ -1,8 +1,13 @@
 
 package vista;
 
+import com.toedter.calendar.JDateChooser;
 import controlador.ControladorFactura;
+import java.awt.event.ItemEvent;
+import java.util.Date;
+
 import javax.swing.table.DefaultTableModel;
+import modelo.Formato_Fecha;
 
 public class NuevaFactura extends javax.swing.JFrame {
     DefaultTableModel modelo;
@@ -15,6 +20,8 @@ public class NuevaFactura extends javax.swing.JFrame {
     public static String pagoCondi;
     public static String divisa;
     public static String nota;
+    public static Date fecha1;
+    public static Date fecha2;
         
     public NuevaFactura() {
         initComponents();
@@ -65,6 +72,16 @@ public class NuevaFactura extends javax.swing.JFrame {
         jLabel1.setText("Proveedor:");
 
         comboProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboProveedor.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboProveedorItemStateChanged(evt);
+            }
+        });
+        comboProveedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboProveedorActionPerformed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Fecha Facturacion:");
@@ -81,7 +98,9 @@ public class NuevaFactura extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nota:");
 
-        Condicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Fecha.setMinSelectableDate(new java.util.Date(-62135744290000L));
+
+        Condicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5 dias ", "10 dias ", "15 dias ", "20 dias ", "30 dias " }));
 
         moneda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moneda", "Quetzales", "Dolares", "Euros" }));
 
@@ -91,8 +110,6 @@ public class NuevaFactura extends javax.swing.JFrame {
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Producto o Servicio:");
-
-        comboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Cantidad:");
@@ -226,8 +243,8 @@ public class NuevaFactura extends javax.swing.JFrame {
         nomProv = comboProveedor.getSelectedItem().toString();
         nomProct = comboProducto.getSelectedItem().toString();
         cantidad = Integer.parseInt( txtcant.getText());
-        fechaIni = Fecha.getDateFormatString();
-        fechaLim = FechaLim.getDateFormatString();
+        fecha1 = Fecha.getDate() ;
+        fecha2 = FechaLim.getDate();
         pagoCondi =Condicion.getSelectedItem().toString();
         divisa = moneda.getSelectedItem().toString();
         nota = txtnota.getText();
@@ -248,6 +265,20 @@ public class NuevaFactura extends javax.swing.JFrame {
         tabla.setModel( modelo);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void comboProveedorItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboProveedorItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED ){
+            String nombreProv = comboProveedor.getSelectedItem().toString();
+            comboProducto.setModel(datosFac.ProductosProveedor(nombreProv));
+            System.out.println(nombreProv);
+            
+        }
+    }//GEN-LAST:event_comboProveedorItemStateChanged
+
+    private void comboProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboProveedorActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -256,7 +287,7 @@ public class NuevaFactura extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("windos".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -282,8 +313,8 @@ public class NuevaFactura extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> Condicion;
-    private com.toedter.calendar.JDateChooser Fecha;
-    private com.toedter.calendar.JDateChooser FechaLim;
+    public static com.toedter.calendar.JDateChooser Fecha;
+    public static com.toedter.calendar.JDateChooser FechaLim;
     private javax.swing.JComboBox<String> comboProducto;
     private javax.swing.JComboBox<String> comboProveedor;
     private javax.swing.JButton jButton1;
