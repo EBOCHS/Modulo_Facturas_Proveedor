@@ -95,7 +95,7 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("PRUEVAS:");
+        jButton1.setText("PRUEBAS:");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -219,6 +219,8 @@ public class login extends javax.swing.JFrame {
        /*DiseñoFactura prueva = new DiseñoFactura();
        prueva.setVisible(true);
        this.dispose();*/
+       
+        System.out.println("hola");
     }//GEN-LAST:event_jButton1ActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
