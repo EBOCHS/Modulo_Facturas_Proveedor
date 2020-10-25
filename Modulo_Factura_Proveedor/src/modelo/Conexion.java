@@ -12,6 +12,7 @@ public class Conexion {
     static ResultSet rs;
     
     private static String usuario_BD = "BD_Factura_Proveedor";
+   
     private static String contraseña="erick67boch";
     private static String url="jdbc:oracle:thin:@localhost:1521:xe";
   

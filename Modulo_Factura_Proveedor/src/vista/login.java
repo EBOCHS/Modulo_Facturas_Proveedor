@@ -25,12 +25,12 @@ public class login extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/iconfinder_icons_password_1564520 (3).png"))); // NOI18N
@@ -64,8 +64,8 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        txtpass.setBackground(new java.awt.Color(102, 102, 102));
-        txtpass.setForeground(new java.awt.Color(255, 255, 255));
+        txtpass.setBackground(new java.awt.Color(255, 255, 255));
+        txtpass.setForeground(new java.awt.Color(0, 0, 0));
         txtpass.setBorder(null);
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,8 +86,8 @@ public class login extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Contraseña");
 
-        txtnombre.setBackground(new java.awt.Color(102, 102, 102));
-        txtnombre.setForeground(new java.awt.Color(255, 255, 255));
+        txtnombre.setBackground(new java.awt.Color(255, 255, 255));
+        txtnombre.setForeground(new java.awt.Color(0, 0, 0));
         txtnombre.setBorder(null);
         txtnombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,10 +95,10 @@ public class login extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("PRUEBAS:");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn.setText("prueba");
+        btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnActionPerformed(evt);
             }
         });
 
@@ -124,40 +124,42 @@ public class login extends javax.swing.JFrame {
                                     .addComponent(jSeparator1)
                                     .addComponent(jSeparator2)
                                     .addComponent(txtpass)
+                                    .addComponent(txtnombre)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(0, 209, Short.MAX_VALUE))
-                                    .addComponent(txtnombre)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton1)))))))
+                                        .addGap(15, 237, Short.MAX_VALUE)))))))
                 .addGap(67, 67, 67))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
+                .addGap(109, 109, 109)
+                .addComponent(btn)
+                .addGap(18, 18, 18))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jButton1))
+                        .addGap(27, 27, 27)
+                        .addComponent(btn)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
                         .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -201,9 +203,11 @@ public class login extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             //ControladorLogin datos = new ControladorLogin();
         nombre = txtnombre.getText();
-        password =new String(txtpass.getPassword() );
+        password = new String(txtpass.getPassword() );
+        ControladorLogin datos = new ControladorLogin();
+        datos.ActivarBoton();
+        setVisible(datos.estado);
         //datos.ActivarBoton();
-        
         }
     }//GEN-LAST:event_btninicioKeyPressed
 
@@ -212,16 +216,13 @@ public class login extends javax.swing.JFrame {
         txtpass.requestFocus();
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
         // TODO add your handling code here:
-       NuevaFactura prueva = new NuevaFactura();
-       prueva.setVisible(true);
-       /*DiseñoFactura prueva = new DiseñoFactura();
-       prueva.setVisible(true);
-       this.dispose();*/
-       
-        System.out.println("hola");
-    }//GEN-LAST:event_jButton1ActionPerformed
+        Vista_Factura b = new Vista_Factura();
+        b.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_btnActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -255,9 +256,9 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn;
     public javax.swing.JToggleButton btnCrear;
     public static javax.swing.JButton btninicio;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
