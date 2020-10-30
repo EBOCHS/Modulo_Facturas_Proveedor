@@ -1,5 +1,9 @@
 
 package vista;
+
+import com.sun.glass.events.KeyEvent;
+
+
 public class OpAdministrador extends javax.swing.JFrame {
 
     public OpAdministrador() {
@@ -13,17 +17,17 @@ public class OpAdministrador extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        grafica = new javax.swing.JButton();
+        BTN_IN = new javax.swing.JButton();
+        BTN_R = new javax.swing.JButton();
+        BTN_PROV = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        TBN_FAC = new javax.swing.JToggleButton();
 
         jLabel2.setText("jLabel2");
 
@@ -31,23 +35,48 @@ public class OpAdministrador extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("Mostrar graficas ");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        grafica.setText("Mostrar graficas ");
+        grafica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                graficaActionPerformed(evt);
+            }
+        });
+        grafica.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                graficaKeyPressed(evt);
             }
         });
 
-        jButton3.setText("INICIO");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BTN_IN.setText("INICIO");
+        BTN_IN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BTN_INActionPerformed(evt);
+            }
+        });
+        BTN_IN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BTN_INKeyPressed(evt);
             }
         });
 
-        jButton4.setText("REPORTES");
+        BTN_R.setText("REPORTES");
+        BTN_R.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BTN_RKeyPressed(evt);
+            }
+        });
 
-        jButton5.setText("Proveedores");
+        BTN_PROV.setText("Proveedores");
+        BTN_PROV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_PROVActionPerformed(evt);
+            }
+        });
+        BTN_PROV.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BTN_PROVKeyPressed(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -64,10 +93,15 @@ public class OpAdministrador extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/iconfinder_00-ELASTOFONT-STORE-READY_invoice_2703075.png"))); // NOI18N
 
-        jToggleButton1.setText("NUEVA FACTURA");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        TBN_FAC.setText("NUEVA FACTURA");
+        TBN_FAC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                TBN_FACActionPerformed(evt);
+            }
+        });
+        TBN_FAC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TBN_FACKeyPressed(evt);
             }
         });
 
@@ -78,36 +112,41 @@ public class OpAdministrador extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
+                    .addComponent(BTN_IN)
                     .addComponent(jLabel5))
                 .addGap(288, 288, 288))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(48, 48, 48)
-                            .addComponent(jToggleButton1)
+                            .addComponent(TBN_FAC)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton2)
+                            .addComponent(grafica)
                             .addGap(60, 60, 60)
-                            .addComponent(jButton5))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addGap(204, 204, 204)
-                            .addComponent(jLabel4)
-                            .addGap(120, 120, 120)
+                            .addComponent(BTN_PROV))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(72, 72, 72)
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGap(204, 204, 204)
+                                    .addComponent(jLabel4)
+                                    .addGap(129, 129, 129)))
                             .addComponent(jLabel6)
-                            .addGap(32, 32, 32)))
+                            .addGap(23, 23, 23)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
                         .addGap(9, 9, 9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(jButton4))
+                    .addComponent(BTN_R)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(15, 15, 15)))
                 .addGap(58, 58, 58))
         );
         jPanel1Layout.setVerticalGroup(
@@ -123,14 +162,14 @@ public class OpAdministrador extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jToggleButton1))
+                    .addComponent(grafica)
+                    .addComponent(BTN_PROV)
+                    .addComponent(BTN_R)
+                    .addComponent(TBN_FAC))
                 .addGap(42, 42, 42)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(BTN_IN)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -148,24 +187,108 @@ public class OpAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void graficaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_graficaActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void TBN_FACActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TBN_FACActionPerformed
         // TODO add your handling code here:
          Vista_Factura fac = new Vista_Factura();
         fac.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_TBN_FACActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BTN_INActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_INActionPerformed
         // TODO add your handling code here:
         login obj =new login();
         obj.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BTN_INActionPerformed
+
+    private void TBN_FACKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBN_FACKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+            grafica.requestFocus();
+            
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            Vista_Factura fac = new Vista_Factura();
+        fac.setVisible(true);
+        this.dispose();
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_DOWN ){
+            BTN_IN.requestFocus();
+        }
+    }//GEN-LAST:event_TBN_FACKeyPressed
+
+    private void graficaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_graficaKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+            BTN_PROV.requestFocus();
+            
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+            TBN_FAC.requestFocus();
+            
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_DOWN ){
+            BTN_IN.requestFocus();
+        }
+        
+    }//GEN-LAST:event_graficaKeyPressed
+
+    private void BTN_PROVKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BTN_PROVKeyPressed
+        // TODO add your handling code here:
+        
+        if (evt.getKeyCode() == KeyEvent.VK_RIGHT) {
+            BTN_R.requestFocus();
+            
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+            grafica.requestFocus();
+            
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_DOWN ){
+            BTN_IN.requestFocus();
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER ){
+            vista_crear_proveedor ini=new vista_crear_proveedor();
+            ini.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_BTN_PROVKeyPressed
+
+    private void BTN_RKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BTN_RKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_LEFT) {
+            BTN_PROV.requestFocus();
+            
+        }
+        if(evt.getKeyCode()==KeyEvent.VK_DOWN ){
+            BTN_IN.requestFocus();
+        }
+    }//GEN-LAST:event_BTN_RKeyPressed
+
+    private void BTN_INKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BTN_INKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_UP){
+           TBN_FAC.requestFocus();
+        }
+         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+         login obj =new login();
+         obj.setVisible(true);
+         this.dispose();
+        }
+    }//GEN-LAST:event_BTN_INKeyPressed
+
+    private void BTN_PROVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_PROVActionPerformed
+        // TODO add your handling code here:
+        vista_crear_proveedor ini= new  vista_crear_proveedor();
+       ini.setVisible(true);
+       this.dispose();
+        
+    }//GEN-LAST:event_BTN_PROVActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -176,10 +299,11 @@ public class OpAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton BTN_IN;
+    public static javax.swing.JButton BTN_PROV;
+    public static javax.swing.JButton BTN_R;
+    public static javax.swing.JToggleButton TBN_FAC;
+    public static javax.swing.JButton grafica;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -188,6 +312,5 @@ public class OpAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,7 +21,6 @@ public class Vista_Factura extends javax.swing.JFrame {
      * Creates new form Vista_Factura
      */
     ControladorFactura Control= new ControladorFactura();
-    public static DefaultTableModel modelo;
     public static String nomProv;
     public static String nomProct;
     public static String pagoCondi;
@@ -33,20 +32,13 @@ public class Vista_Factura extends javax.swing.JFrame {
     public static int precio;
     public static int total;
     public static String datos[] = new String[100];
-    public static String datosTabla[] = new String[4];
+
     public static int cantidad; 
     public Vista_Factura() {
         initComponents();
         setLocationRelativeTo(null);
         comboProveedor.addItem("PROVEEDOR");
         comboProveedor.setModel(Control.datosProveedor());
-        modelo = new DefaultTableModel();
-        modelo.addColumn("producto");
-        modelo.addColumn("cantidad");
-        modelo.addColumn("precio");
-        modelo.addColumn("Total");
-        this.tabla.setModel(modelo);
-       
     }
 
     @SuppressWarnings("unchecked")
@@ -71,8 +63,6 @@ public class Vista_Factura extends javax.swing.JFrame {
         moneda = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtnota = new javax.swing.JTextArea();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
         CrearFactura = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -118,26 +108,37 @@ public class Vista_Factura extends javax.swing.JFrame {
         });
 
         comboProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "producto" }));
+        comboProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboProductoActionPerformed(evt);
+            }
+        });
+
+        txtcant.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtcantActionPerformed(evt);
+            }
+        });
 
         Fecha.setMinSelectableDate(new java.util.Date(-62135744290000L));
 
         Condicion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "5 dias ", "10 dias ", "15 dias ", "20 dias ", "30 dias " }));
+        Condicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CondicionActionPerformed(evt);
+            }
+        });
 
         moneda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Moneda", "Quetzales", "Dolares", "Euros" }));
+        moneda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                monedaActionPerformed(evt);
+            }
+        });
 
         txtnota.setColumns(20);
         txtnota.setRows(5);
         jScrollPane1.setViewportView(txtnota);
-
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Producto", "cantidad:", "Precio"
-            }
-        ));
-        jScrollPane2.setViewportView(tabla);
 
         CrearFactura.setText("Generar");
         CrearFactura.addActionListener(new java.awt.event.ActionListener() {
@@ -158,14 +159,14 @@ public class Vista_Factura extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addComponent(jLabel6)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
@@ -187,17 +188,16 @@ public class Vista_Factura extends javax.swing.JFrame {
                                     .addComponent(jLabel3))
                                 .addGap(37, 37, 37)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(FechaLim, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(FechaLim, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
                                     .addComponent(Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtcant)
-                                    .addComponent(comboProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
+                                    .addComponent(comboProducto, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(CrearFactura)))
-                        .addGap(12, 12, 12))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(CrearFactura)
+                                .addGap(21, 21, 21)
+                                .addComponent(jButton3)))
+                        .addGap(111, 111, 111))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,14 +235,12 @@ public class Vista_Factura extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CrearFactura))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CrearFactura)
                     .addComponent(jButton3))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -272,6 +270,7 @@ public class Vista_Factura extends javax.swing.JFrame {
 
     private void comboProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProveedorActionPerformed
         // TODO add your handling code here:
+        comboProducto.requestFocus();
     }//GEN-LAST:event_comboProveedorActionPerformed
 
     private void CrearFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrearFacturaActionPerformed
@@ -281,9 +280,6 @@ public class Vista_Factura extends javax.swing.JFrame {
         datos[1]= txtcant.getText();
         datos[2]= Control.PrecioProducto(comboProducto.getSelectedItem().toString()) ;
         datos[3]= Control.CalcularTotal( precio , cant);
-        total= Integer.parseInt( Control.CalcularTotal( precio , cant));
-        modelo.addRow (datos);
-        tabla.setModel( modelo);
         
         nomProv = comboProveedor.getSelectedItem().toString();
         nomProct = comboProducto.getSelectedItem().toString();
@@ -309,6 +305,26 @@ public class Vista_Factura extends javax.swing.JFrame {
         obj.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void comboProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductoActionPerformed
+        // TODO add your handling code here:
+        txtcant.requestFocus();
+    }//GEN-LAST:event_comboProductoActionPerformed
+
+    private void txtcantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcantActionPerformed
+        // TODO add your handling code here:
+        Fecha.requestFocus();
+    }//GEN-LAST:event_txtcantActionPerformed
+
+    private void CondicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CondicionActionPerformed
+        // TODO add your handling code here:
+        moneda.requestFocus();
+    }//GEN-LAST:event_CondicionActionPerformed
+
+    private void monedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_monedaActionPerformed
+        // TODO add your handling code here:
+        CrearFactura.requestFocus();
+    }//GEN-LAST:event_monedaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,9 +379,7 @@ public class Vista_Factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JComboBox<String> moneda;
-    public static javax.swing.JTable tabla;
     public static javax.swing.JTextField txtcant;
     public static javax.swing.JTextArea txtnota;
     // End of variables declaration//GEN-END:variables

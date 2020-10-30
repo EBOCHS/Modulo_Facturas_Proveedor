@@ -25,7 +25,6 @@ public class login extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,6 +71,11 @@ public class login extends javax.swing.JFrame {
                 txtpassActionPerformed(evt);
             }
         });
+        txtpass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtpassKeyPressed(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
@@ -94,11 +98,9 @@ public class login extends javax.swing.JFrame {
                 txtnombreActionPerformed(evt);
             }
         });
-
-        btn.setText("prueba");
-        btn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActionPerformed(evt);
+        txtnombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtnombreKeyPressed(evt);
             }
         });
 
@@ -135,9 +137,7 @@ public class login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109)
-                .addComponent(btn)
-                .addGap(18, 18, 18))
+                .addGap(197, 197, 197))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,9 +151,7 @@ public class login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(btn)
-                        .addGap(30, 30, 30)
+                        .addGap(89, 89, 89)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -209,6 +207,11 @@ public class login extends javax.swing.JFrame {
         setVisible(datos.estado);
         //datos.ActivarBoton();
         }
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            //ControladorLogin datos = new ControladorLogin();
+            txtpass.requestFocus();
+        }
+        
     }//GEN-LAST:event_btninicioKeyPressed
 
     private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
@@ -216,13 +219,25 @@ public class login extends javax.swing.JFrame {
         txtpass.requestFocus();
     }//GEN-LAST:event_txtnombreActionPerformed
 
-    private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
+    private void txtnombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtnombreKeyPressed
         // TODO add your handling code here:
-        Vista_Factura b = new Vista_Factura();
-        b.setVisible(true);
-        this.dispose();
-        
-    }//GEN-LAST:event_btnActionPerformed
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            //ControladorLogin datos = new ControladorLogin();
+            txtpass.requestFocus();
+        }
+    }//GEN-LAST:event_txtnombreKeyPressed
+
+    private void txtpassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpassKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_UP) {
+            //ControladorLogin datos = new ControladorLogin();
+            txtnombre.requestFocus();
+        }
+        if (evt.getKeyCode() == KeyEvent.VK_DOWN) {
+            //ControladorLogin datos = new ControladorLogin();
+            btninicio.requestFocus();
+        }
+    }//GEN-LAST:event_txtpassKeyPressed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -256,7 +271,6 @@ public class login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn;
     public javax.swing.JToggleButton btnCrear;
     public static javax.swing.JButton btninicio;
     private javax.swing.JLabel jLabel1;
